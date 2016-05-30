@@ -6,4 +6,5 @@
     android:numColumns="auto_fit"
     android:stretchMode="columnWidth"
     android:layout_width="match_parent"
+    android:background="#ddd"
     android:layout_height="match_parent"/>
