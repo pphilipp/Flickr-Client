@@ -26,12 +26,12 @@ public class FetchItemsTask extends AsyncTask<Void, Void, ArrayList<GalleryItem>
     protected void onPostExecute(ArrayList<GalleryItem> galleryItems) {
         Log.d(LOG_TAG, "onPostExecute()");
         if(mCallBack != null)
-            mCallBack.doSomething(galleryItems);
+            mCallBack.callBack(galleryItems);
     }
 
     /** interface for CallBack*/
     public interface FetchItemTaskCallBack {
-        void doSomething(ArrayList<GalleryItem> galleryItems);
+        void callBack(ArrayList<GalleryItem> galleryItems);
     }
 
 }

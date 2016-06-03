@@ -58,11 +58,6 @@ public class FlickrFetchr {
         }
     }
 
-    public String getUrl(String urlSpec) throws IOException {
-        Log.d(LOG_TAG, "getUrl()");
-        return new String(getUrlBytes(urlSpec));
-    }
-
     public ArrayList<GalleryItem> fetchItems() {
         ArrayList<GalleryItem> items = new ArrayList<>();
 
@@ -80,17 +75,8 @@ public class FlickrFetchr {
             XmlPullParser parser = factory.newPullParser();
             parser.setInput(new StringReader(xmlString));
 
-            Log.d(LOG_TAG, "items---->" + items.size());
             parseItems(items, parser);
             Log.d(LOG_TAG, "items---->" + items.size());
-
-            /**+++++++++*/
-            int flag = 1;
-            for (GalleryItem g : items) {
-
-                Log.d(LOG_TAG, "Item --->" + flag++ + "<---"+ g.toString());
-            }
-            /**+++++++++*/
 
         } catch (IOException ioe) {
             Log.e(LOG_TAG, "Failed to fetch items", ioe);
@@ -99,6 +85,11 @@ public class FlickrFetchr {
         }
 
         return items;
+    }
+
+    public String getUrl(String urlSpec) throws IOException {
+        Log.d(LOG_TAG, "getUrl()");
+        return new String(getUrlBytes(urlSpec));
     }
 
     private void parseItems(ArrayList<GalleryItem> items, XmlPullParser parser)
