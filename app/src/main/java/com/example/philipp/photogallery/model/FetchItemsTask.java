@@ -1,9 +1,7 @@
-package com.example.philipp.photogallery;
+package com.example.philipp.photogallery.model;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.example.philipp.photogallery.model.GalleryItem;
 
 import java.util.ArrayList;
 

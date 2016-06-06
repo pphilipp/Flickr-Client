@@ -8,20 +8,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.philipp.photogallery.R;
 import com.example.philipp.photogallery.model.GalleryItem;
-
+import com.example.philipp.photogallery.model.ThumbnailDownloader;
 import java.util.ArrayList;
 
 public class GalleryAdapter  extends RecyclerView.Adapter<GalleryAdapter.RecyclerViewHolders> {
 
     private ArrayList<GalleryItem> mItemList;
     private Context mContext;
+    ThumbnailDownloader<ImageView> mThumbnailThread;
 
-    public GalleryAdapter(Context context, ArrayList<GalleryItem> itemList) {
+    public GalleryAdapter(Context context, ArrayList<GalleryItem> itemList, ThumbnailDownloader<ImageView> thumbnailThread) {
         mItemList = itemList;
         mContext = context;
+        mThumbnailThread = thumbnailThread;
+
     }
 
     @Override
@@ -40,6 +42,9 @@ public class GalleryAdapter  extends RecyclerView.Adapter<GalleryAdapter.Recycle
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
         holder.itemName.setText(mItemList.get(position).getUrl());
         holder.itemPhoto.setImageResource(R.drawable.image_cool);
+
+        GalleryItem item = mItemList.get(position);
+        mThumbnailThread.queueThumbnail(holder.itemPhoto, item.getUrl());
     }
 
     /**

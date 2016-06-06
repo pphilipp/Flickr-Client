@@ -1,9 +1,7 @@
-package com.example.philipp.photogallery;
+package com.example.philipp.photogallery.model;
 
 import android.net.Uri;
 import android.util.Log;
-
-import com.example.philipp.photogallery.model.GalleryItem;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
